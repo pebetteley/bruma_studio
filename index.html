@@ -1,153 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bruma Estudio — Arte para tus espacios</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --rose:#E8C4B8;--blush:#F2DDD5;--sage:#B8C9B0;--sage2:#D4E0CC;
-  --sky:#B8CCE0;--sky2:#D4E4F0;--gold:#D4B896;--gold2:#EAD8C0;
-  --lav:#C8B8D8;--lav2:#E0D4EC;--warm:#E8DDD0;--paper:#FAF6EE;
-  --ink:#3A2E26;--ink2:#5C4E42;--muted:#8C7E72;
-  --rust:#B05A3A;--rust2:#D07858;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:var(--sans);color:var(--ink);overflow-x:hidden;
-  background-color:var(--paper);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(ellipse at 15% 8%,rgba(232,196,184,.16) 0%,transparent 48%),
-    radial-gradient(ellipse at 82% 25%,rgba(184,200,176,.14) 0%,transparent 44%),
-    radial-gradient(ellipse at 48% 68%,rgba(184,204,224,.11) 0%,transparent 50%),
-    radial-gradient(ellipse at 8% 88%,rgba(212,184,150,.13) 0%,transparent 40%),
-    radial-gradient(ellipse at 90% 80%,rgba(200,184,216,.12) 0%,transparent 45%);
-}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3.5rem;background:rgba(250,246,238,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,184,150,.28);}
-.nl{font-family:var(--serif);font-size:1.55rem;font-weight:400;letter-spacing:.14em;color:var(--ink);text-decoration:none;}
-.nl span{color:var(--rust);}
-.nlinks{display:flex;gap:2.2rem;list-style:none;}
-.nlinks a{font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s;}
-.nlinks a:hover{color:var(--rust);}
-.ncta{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:.55rem 1.3rem;text-decoration:none;transition:background .2s;}
-.ncta:hover{background:var(--rust);}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruma Estudio — Arte para tus espacios</title>
 
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1.08fr;padding-top:72px;}
-.hl{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem;background:linear-gradient(145deg,rgba(242,221,213,.55) 0%,rgba(232,208,196,.3) 100%);}
-.ey{font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1.4rem;}
-.ht{font-family:var(--serif);font-size:4rem;line-height:1.08;font-weight:300;color:var(--ink);margin-bottom:1.3rem;}
-.ht em{font-style:italic;color:var(--rust2);}
-.hs{font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:400px;margin-bottom:2.3rem;}
-.ha{display:flex;gap:1rem;align-items:center;}
-.bp{background:var(--ink);color:var(--paper);padding:.78rem 2rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
-.bp:hover{background:var(--rust);}
-.bs{color:var(--ink);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;transition:color .2s,border-color .2s;}
-.bs:hover{color:var(--rust);border-color:var(--rust);}
-.hr{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--warm);}
-.ha1{grid-column:1/3;overflow:hidden;}
-.ha1 svg,.hs1 svg{width:100%;height:100%;display:block;}
-.hs1{overflow:hidden;}
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-.mwrap{background:var(--ink);padding:.82rem 0;overflow:hidden;}
-.mtrack{display:flex;gap:2.5rem;white-space:nowrap;animation:sc 26s linear infinite;}
-.mi{font-size:.69rem;letter-spacing:.2em;text-transform:uppercase;flex-shrink:0;color:var(--warm);display:flex;align-items:center;gap:1.2rem;}
-.md{width:3px;height:3px;border-radius:50%;background:var(--rust2);flex-shrink:0;}
-@keyframes sc{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-section{padding:6rem 3.5rem;}
-.sl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:.9rem;}
-.st{font-family:var(--serif);font-size:2.75rem;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:1.1rem;}
-.st em{font-style:italic;color:var(--muted);}
-
-.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:3.5rem;}
-.cc{cursor:pointer;transition:transform .3s;}
-.cc:hover{transform:translateY(-7px);}
-.cart{border-radius:2px;overflow:hidden;margin-bottom:.85rem;}
-.cart svg{width:100%;display:block;}
-.cn{font-family:var(--serif);font-size:1.13rem;color:var(--ink);margin-bottom:.22rem;}
-.cs{font-size:.73rem;color:var(--muted);letter-spacing:.05em;}
-
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:3.5rem;}
-.pc{cursor:pointer;}
-.part{margin-bottom:.85rem;overflow:hidden;position:relative;}
-.part svg{width:100%;display:block;}
-.pframe{position:absolute;inset:0;border:10px solid rgba(255,255,255,.88);box-shadow:inset 0 0 0 1px rgba(180,160,130,.35);pointer-events:none;}
-.pov{position:absolute;inset:0;background:rgba(58,46,38,.62);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
-.pc:hover .pov{opacity:1;}
-.povb{background:var(--paper);color:var(--ink);padding:.52rem 1.25rem;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
-.pn{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin-bottom:.22rem;}
-.pm{display:flex;justify-content:space-between;align-items:center;}
-.pp{font-size:.9rem;font-weight:500;color:var(--ink);}
-.pct{font-size:.69rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-
-.cfgl{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start;}
-.cfgc{background:rgba(255,255,255,.48);border:1px solid rgba(212,184,150,.35);padding:2.5rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
-.cfw{width:75%;aspect-ratio:3/4;border:12px solid #c8b090;position:relative;overflow:hidden;transition:border-color .3s,border-width .3s;}
-.cfw svg{width:100%;height:100%;display:block;}
-.cfgo{display:flex;flex-direction:column;gap:1.75rem;}
-.cgl{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem;}
-.chips{display:flex;gap:.48rem;flex-wrap:wrap;}
-.chip{padding:.43rem .88rem;font-size:.78rem;border:1px solid rgba(140,126,114,.32);cursor:pointer;transition:all .2s;color:var(--ink2);background:rgba(255,255,255,.58);}
-.chip:hover,.chip.active{background:var(--rust);border-color:var(--rust);color:white;}
-.ctot{border-top:1px solid rgba(140,126,114,.22);padding-top:1.35rem;display:flex;justify-content:space-between;align-items:flex-end;}
-.ctlbl{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem;}
-.ctp{font-family:var(--serif);font-size:2rem;color:var(--ink);}
-.cfgbtn{width:100%;padding:.88rem;background:var(--ink);color:var(--paper);border:none;cursor:pointer;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.9rem;transition:background .2s;}
-.cfgbtn:hover{background:var(--rust);}
-
-.pgr{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;}
-.pn2{font-family:var(--serif);font-size:4.2rem;line-height:1;font-weight:300;margin-bottom:.75rem;opacity:.15;}
-.pt{font-family:var(--serif);font-size:1.18rem;color:var(--ink);margin-bottom:.45rem;}
-.pb{font-size:.87rem;color:var(--ink2);line-height:1.72;}
-
-.tgr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
-.tc{background:rgba(255,255,255,.52);border:1px solid rgba(212,184,150,.28);padding:1.75rem;border-top:3px solid var(--rust2);}
-.ts{color:var(--rust2);font-size:.85rem;margin-bottom:.85rem;}
-.tt{font-family:var(--serif);font-size:1.03rem;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:1.1rem;}
-.tby{font-size:.71rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-
-.nlsec{background:var(--rust);color:white;text-align:center;padding:5rem 3.5rem;}
-.nlsec .sl{color:rgba(255,255,255,.58);}
-.nlf{display:flex;max-width:440px;margin:1.8rem auto 0;}
-.nli{flex:1;padding:.83rem 1.1rem;border:none;background:rgba(255,255,255,.17);color:white;font-size:.88rem;outline:none;}
-.nli::placeholder{color:rgba(255,255,255,.48);}
-.nlb{background:var(--ink);color:white;border:none;padding:.83rem 1.3rem;cursor:pointer;font-size:.77rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
-
-.tbar{background:var(--sage2);display:flex;justify-content:center;gap:3rem;padding:.82rem 2rem;flex-wrap:wrap;}
-.ti{display:flex;align-items:center;gap:.5rem;font-size:.79rem;color:var(--ink2);}
-
-footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
-.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-.fbl{font-family:var(--serif);font-size:1.65rem;color:var(--paper);letter-spacing:.1em;margin-bottom:.75rem;}
-.fbl span{color:var(--rust2);}
-.fd{font-size:.84rem;color:rgba(255,255,255,.43);line-height:1.7;}
-.fct{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);margin-bottom:.95rem;}
-.fcl{list-style:none;}
-.fcl li{margin-bottom:.48rem;}
-.fcl a{color:rgba(255,255,255,.43);text-decoration:none;font-size:.84rem;transition:color .2s;}
-.fcl a:hover{color:var(--rust2);}
-.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.35rem;display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.3);}
-.soc{display:flex;gap:1.5rem;}
-.soc a{color:rgba(255,255,255,.33);text-decoration:none;font-size:.71rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
-.soc a:hover{color:var(--rust2);}
-
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}.nlinks{display:none;}
-  .hero{grid-template-columns:1fr;}.hr{min-height:60vw;}
-  section{padding:4rem 1.5rem;}
-  .cgrid{grid-template-columns:1fr 1fr;}
-  .pgrid{grid-template-columns:1fr 1fr;}
-  .cfgl,.fg{grid-template-columns:1fr;}
-  .pgr{grid-template-columns:1fr 1fr;}
-  .tgr{grid-template-columns:1fr;}
-  .ht{font-size:2.7rem;}.st{font-size:2.1rem;}
-}
-</style>
+  <!-- Estilos separados -->
+  <link rel="stylesheet" href="css/bruma.css">
 </head>
 <body>
 
@@ -270,7 +132,6 @@ footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
     </div>
   </div>
 </section>
-
 <!-- TRUST BAR -->
 <div class="tbar">
   <div class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Despacho a todo Chile</div>
@@ -286,7 +147,6 @@ footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
     <div class="mi"><span class="md"></span>Arte con alma</div><div class="mi"><span class="md"></span>Acuarela pastel</div><div class="mi"><span class="md"></span>Arte religioso</div><div class="mi"><span class="md"></span>Decoración hogar</div><div class="mi"><span class="md"></span>Mundo infantil</div><div class="mi"><span class="md"></span>Fine art impreso</div><div class="mi"><span class="md"></span>Hecho en Chile</div><div class="mi"><span class="md"></span>Personalización única</div>
   </div>
 </div>
-
 <!-- CATEGORÍAS -->
 <section style="background:linear-gradient(148deg,rgba(242,221,213,.48) 0%,rgba(232,208,198,.28) 100%);padding:6rem 3.5rem;" id="cats">
   <p class="sl">Colecciones</p>
@@ -645,7 +505,6 @@ footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
     </div>
   </div>
 </section>
-
 <!-- CONFIGURADOR -->
 <section style="background:linear-gradient(148deg,rgba(234,216,192,.48) 0%,rgba(212,184,150,.26) 100%);padding:6rem 3.5rem;" id="cfg">
   <p class="sl">Personaliza tu obra</p>
@@ -757,7 +616,7 @@ footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
     <div><p class="fbl">BRUMA <span>·</span> ESTUDIO</p><p class="fd">Arte impreso con alma. Ilustraciones y fotografías de acuarela para transformar tus espacios con intención y estilo. Hecho en Chile.</p></div>
     <div><p class="fct">Colecciones</p><ul class="fcl"><li><a href="#">Sagrada</a></li><li><a href="#">Decoración Hogar</a></li><li><a href="#">Mundo Infantil</a></li><li><a href="#">Fotografía</a></li><li><a href="#">A tu medida</a></li></ul></div>
     <div><p class="fct">Información</p><ul class="fcl"><li><a href="#">Sobre nosotros</a></li><li><a href="#">Cómo comprar</a></li><li><a href="#">Despachos</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Preguntas frecuentes</a></li></ul></div>
-    <div><p class="fct">Contacto</p><ul class="fcl"><li><a href="#">@brumaestudio</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">hola@brumaestudio.cl</a></li><li><a href="#">Santiago, Chile</a></li></ul></div>
+    <div><p class="fct">Contacto</p><ul class="fcl"><li><a href="#">@brumaestudio</a></li><li><a href="#">WhatsApp</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="5f3730333e1f3d2d2a323e3a2c2b2a3b3630713c33">[email&#160;protected]</span></a></li><li><a href="#">Santiago, Chile</a></li></ul></div>
   </div>
   <div class="fbot">
     <span>© 2025 Bruma Estudio. Todos los derechos reservados.</span>
@@ -765,12 +624,7 @@ footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
   </div>
 </footer>
 
-<script>
-const BASE=28000;
-function pk(el,gid){document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');ut();}
-function sf(el){const fw=document.getElementById('fW');fw.style.borderColor=el.dataset.bc||'#e8e0d0';fw.style.borderWidth=(el.dataset.bw||'2')+'px';}
-function ut(){let t=BASE;document.querySelectorAll('.chip.active').forEach(c=>{t+=parseInt(c.dataset.price||0);});document.getElementById('tP').textContent='$'+t.toLocaleString('es-CL');}
-document.querySelectorAll('.chip').forEach(c=>{if(!c.dataset.price)c.dataset.price=0;});
-</script>
+<!-- JavaScript separado -->
+<script src="js/main.js"></script>
 </body>
 </html>
