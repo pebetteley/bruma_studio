@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bruma Estudio — Arte para tus espacios</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:#E8C4B8;--blush:#F2DDD5;--sage:#B8C9B0;--sage2:#D4E0CC;
+  --sky:#B8CCE0;--sky2:#D4E4F0;--gold:#D4B896;--gold2:#EAD8C0;
+  --lav:#C8B8D8;--lav2:#E0D4EC;--warm:#E8DDD0;--paper:#FAF6EE;
+  --ink:#3A2E26;--ink2:#5C4E42;--muted:#8C7E72;
+  --rust:#B05A3A;--rust2:#D07858;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);color:var(--ink);overflow-x:hidden;
+  background-color:var(--paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 15% 8%,rgba(232,196,184,.16) 0%,transparent 48%),
+    radial-gradient(ellipse at 82% 25%,rgba(184,200,176,.14) 0%,transparent 44%),
+    radial-gradient(ellipse at 48% 68%,rgba(184,204,224,.11) 0%,transparent 50%),
+    radial-gradient(ellipse at 8% 88%,rgba(212,184,150,.13) 0%,transparent 40%),
+    radial-gradient(ellipse at 90% 80%,rgba(200,184,216,.12) 0%,transparent 45%);
+}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3.5rem;background:rgba(250,246,238,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,184,150,.28);}
+.nl{font-family:var(--serif);font-size:1.55rem;font-weight:400;letter-spacing:.14em;color:var(--ink);text-decoration:none;}
+.nl span{color:var(--rust);}
+.nlinks{display:flex;gap:2.2rem;list-style:none;}
+.nlinks a{font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s;}
+.nlinks a:hover{color:var(--rust);}
+.ncta{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:.55rem 1.3rem;text-decoration:none;transition:background .2s;}
+.ncta:hover{background:var(--rust);}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1.08fr;padding-top:72px;}
+.hl{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem;background:linear-gradient(145deg,rgba(242,221,213,.55) 0%,rgba(232,208,196,.3) 100%);}
+.ey{font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1.4rem;}
+.ht{font-family:var(--serif);font-size:4rem;line-height:1.08;font-weight:300;color:var(--ink);margin-bottom:1.3rem;}
+.ht em{font-style:italic;color:var(--rust2);}
+.hs{font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:400px;margin-bottom:2.3rem;}
+.ha{display:flex;gap:1rem;align-items:center;}
+.bp{background:var(--ink);color:var(--paper);padding:.78rem 2rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
+.bp:hover{background:var(--rust);}
+.bs{color:var(--ink);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;transition:color .2s,border-color .2s;}
+.bs:hover{color:var(--rust);border-color:var(--rust);}
+.hr{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--warm);}
+.ha1{grid-column:1/3;overflow:hidden;}
+.ha1 svg,.hs1 svg{width:100%;height:100%;display:block;}
+.hs1{overflow:hidden;}
+
+.mwrap{background:var(--ink);padding:.82rem 0;overflow:hidden;}
+.mtrack{display:flex;gap:2.5rem;white-space:nowrap;animation:sc 26s linear infinite;}
+.mi{font-size:.69rem;letter-spacing:.2em;text-transform:uppercase;flex-shrink:0;color:var(--warm);display:flex;align-items:center;gap:1.2rem;}
+.md{width:3px;height:3px;border-radius:50%;background:var(--rust2);flex-shrink:0;}
+@keyframes sc{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+section{padding:6rem 3.5rem;}
+.sl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:.9rem;}
+.st{font-family:var(--serif);font-size:2.75rem;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:1.1rem;}
+.st em{font-style:italic;color:var(--muted);}
+
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:3.5rem;}
+.cc{cursor:pointer;transition:transform .3s;}
+.cc:hover{transform:translateY(-7px);}
+.cart{border-radius:2px;overflow:hidden;margin-bottom:.85rem;}
+.cart svg{width:100%;display:block;}
+.cn{font-family:var(--serif);font-size:1.13rem;color:var(--ink);margin-bottom:.22rem;}
+.cs{font-size:.73rem;color:var(--muted);letter-spacing:.05em;}
+
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:3.5rem;}
+.pc{cursor:pointer;}
+.part{margin-bottom:.85rem;overflow:hidden;position:relative;}
+.part svg{width:100%;display:block;}
+.pframe{position:absolute;inset:0;border:10px solid rgba(255,255,255,.88);box-shadow:inset 0 0 0 1px rgba(180,160,130,.35);pointer-events:none;}
+.pov{position:absolute;inset:0;background:rgba(58,46,38,.62);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.pc:hover .pov{opacity:1;}
+.povb{background:var(--paper);color:var(--ink);padding:.52rem 1.25rem;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+.pn{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin-bottom:.22rem;}
+.pm{display:flex;justify-content:space-between;align-items:center;}
+.pp{font-size:.9rem;font-weight:500;color:var(--ink);}
+.pct{font-size:.69rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+
+.cfgl{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start;}
+.cfgc{background:rgba(255,255,255,.48);border:1px solid rgba(212,184,150,.35);padding:2.5rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
+.cfw{width:75%;aspect-ratio:3/4;border:12px solid #c8b090;position:relative;overflow:hidden;transition:border-color .3s,border-width .3s;}
+.cfw svg{width:100%;height:100%;display:block;}
+.cfgo{display:flex;flex-direction:column;gap:1.75rem;}
+.cgl{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem;}
+.chips{display:flex;gap:.48rem;flex-wrap:wrap;}
+.chip{padding:.43rem .88rem;font-size:.78rem;border:1px solid rgba(140,126,114,.32);cursor:pointer;transition:all .2s;color:var(--ink2);background:rgba(255,255,255,.58);}
+.chip:hover,.chip.active{background:var(--rust);border-color:var(--rust);color:white;}
+.ctot{border-top:1px solid rgba(140,126,114,.22);padding-top:1.35rem;display:flex;justify-content:space-between;align-items:flex-end;}
+.ctlbl{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem;}
+.ctp{font-family:var(--serif);font-size:2rem;color:var(--ink);}
+.cfgbtn{width:100%;padding:.88rem;background:var(--ink);color:var(--paper);border:none;cursor:pointer;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.9rem;transition:background .2s;}
+.cfgbtn:hover{background:var(--rust);}
+
+.pgr{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;}
+.pn2{font-family:var(--serif);font-size:4.2rem;line-height:1;font-weight:300;margin-bottom:.75rem;opacity:.15;}
+.pt{font-family:var(--serif);font-size:1.18rem;color:var(--ink);margin-bottom:.45rem;}
+.pb{font-size:.87rem;color:var(--ink2);line-height:1.72;}
+
+.tgr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.tc{background:rgba(255,255,255,.52);border:1px solid rgba(212,184,150,.28);padding:1.75rem;border-top:3px solid var(--rust2);}
+.ts{color:var(--rust2);font-size:.85rem;margin-bottom:.85rem;}
+.tt{font-family:var(--serif);font-size:1.03rem;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:1.1rem;}
+.tby{font-size:.71rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+
+.nlsec{background:var(--rust);color:white;text-align:center;padding:5rem 3.5rem;}
+.nlsec .sl{color:rgba(255,255,255,.58);}
+.nlf{display:flex;max-width:440px;margin:1.8rem auto 0;}
+.nli{flex:1;padding:.83rem 1.1rem;border:none;background:rgba(255,255,255,.17);color:white;font-size:.88rem;outline:none;}
+.nli::placeholder{color:rgba(255,255,255,.48);}
+.nlb{background:var(--ink);color:white;border:none;padding:.83rem 1.3rem;cursor:pointer;font-size:.77rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+
+.tbar{background:var(--sage2);display:flex;justify-content:center;gap:3rem;padding:.82rem 2rem;flex-wrap:wrap;}
+.ti{display:flex;align-items:center;gap:.5rem;font-size:.79rem;color:var(--ink2);}
+
+footer{background:var(--ink);padding:4rem 3.5rem 2rem;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fbl{font-family:var(--serif);font-size:1.65rem;color:var(--paper);letter-spacing:.1em;margin-bottom:.75rem;}
+.fbl span{color:var(--rust2);}
+.fd{font-size:.84rem;color:rgba(255,255,255,.43);line-height:1.7;}
+.fct{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);margin-bottom:.95rem;}
+.fcl{list-style:none;}
+.fcl li{margin-bottom:.48rem;}
+.fcl a{color:rgba(255,255,255,.43);text-decoration:none;font-size:.84rem;transition:color .2s;}
+.fcl a:hover{color:var(--rust2);}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.35rem;display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.3);}
+.soc{display:flex;gap:1.5rem;}
+.soc a{color:rgba(255,255,255,.33);text-decoration:none;font-size:.71rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.soc a:hover{color:var(--rust2);}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nlinks{display:none;}
+  .hero{grid-template-columns:1fr;}.hr{min-height:60vw;}
+  section{padding:4rem 1.5rem;}
+  .cgrid{grid-template-columns:1fr 1fr;}
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .cfgl,.fg{grid-template-columns:1fr;}
+  .pgr{grid-template-columns:1fr 1fr;}
+  .tgr{grid-template-columns:1fr;}
+  .ht{font-size:2.7rem;}.st{font-size:2.1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nl">BRUMA <span>·</span> ESTUDIO</a>
+  <ul class="nlinks">
+    <li><a href="#cats">Colecciones</a></li>
+    <li><a href="#prods">Obras</a></li>
+    <li><a href="#cfg">Personalizar</a></li>
+    <li><a href="#proc">Nosotros</a></li>
+  </ul>
+  <a href="#prods" class="ncta">Ver catálogo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;" id="top">
+  <div class="hl">
+    <p class="ey">Ilustraciones · Fotografía · Arte impreso</p>
+    <h1 class="ht">Arte que <em>respira</em><br>en tus espacios</h1>
+    <p class="hs">Ilustraciones y fotografías de acuarela impresas con alma. Diseños únicos creados con intención, para decorar tu hogar con belleza y significado.</p>
+    <div class="ha">
+      <a href="#cats" class="bp">Ver colecciones</a>
+      <a href="#cfg" class="bs">Personalizar</a>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="ha1">
+      <!-- VIRGEN ACUARELA HERO -->
+      <svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg" style="height:300px;width:100%;object-fit:cover;">
+        <defs>
+          <radialGradient id="hbg" cx="50%" cy="38%" r="68%"><stop offset="0%" stop-color="#F5EDE2"/><stop offset="100%" stop-color="#E8E0D0"/></radialGradient>
+          <radialGradient id="hhalo" cx="50%" cy="26%" r="34%"><stop offset="0%" stop-color="#F8E870" stop-opacity=".48"/><stop offset="100%" stop-color="#F8E870" stop-opacity="0"/></radialGradient>
+          <filter id="wc0"><feTurbulence type="fractalNoise" baseFrequency=".038" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+          <filter id="bl0"><feGaussianBlur stdDeviation="7"/></filter>
+        </defs>
+        <rect width="500" height="340" fill="url(#hbg)"/>
+        <ellipse cx="250" cy="105" rx="185" ry="130" fill="url(#hhalo)"/>
+        <ellipse cx="130" cy="290" rx="120" ry="85" fill="#C8D8C2" fill-opacity=".22" filter="url(#bl0)"/>
+        <ellipse cx="390" cy="270" rx="100" ry="78" fill="#D8C8D8" fill-opacity=".18" filter="url(#bl0)"/>
+        <!-- manto azul pastel -->
+        <path d="M 100 340 C 90 305 82 250 98 185 C 112 132 165 105 250 100 C 335 105 388 132 402 185 C 418 250 410 305 400 340 Z" fill="#A8C2D8" fill-opacity=".68" filter="url(#wc0)"/>
+        <path d="M 145 340 C 138 300 135 255 148 205 C 160 166 192 140 250 134 C 308 140 340 166 352 205 C 365 255 362 300 355 340 Z" fill="#C2DCF0" fill-opacity=".55"/>
+        <!-- velo -->
+        <ellipse cx="250" cy="162" rx="72" ry="85" fill="#D8EEF8" fill-opacity=".78" filter="url(#wc0)"/>
+        <!-- cara piel cálida -->
+        <ellipse cx="250" cy="148" rx="38" ry="46" fill="#F2DCC8" fill-opacity=".92"/>
+        <ellipse cx="250" cy="148" rx="33" ry="40" fill="#EDD0BC" fill-opacity=".52"/>
+        <!-- cabello marrón -->
+        <path d="M 214 133 Q 250 120 286 133 L 290 152 Q 250 142 210 152 Z" fill="#8C6C50" fill-opacity=".48"/>
+        <!-- ojos suaves -->
+        <ellipse cx="239" cy="144" rx="5.5" ry="3.8" fill="#6A5040" fill-opacity=".52"/>
+        <ellipse cx="261" cy="144" rx="5.5" ry="3.8" fill="#6A5040" fill-opacity=".52"/>
+        <path d="M 243 160 Q 250 165 257 160" stroke="#C08060" stroke-width="1.4" fill="none" stroke-opacity=".5"/>
+        <!-- manos -->
+        <ellipse cx="232" cy="220" rx="13" ry="17" fill="#EDD0BC" fill-opacity=".62" transform="rotate(-12,232,220)"/>
+        <ellipse cx="268" cy="220" rx="13" ry="17" fill="#EDD0BC" fill-opacity=".62" transform="rotate(12,268,220)"/>
+        <!-- cruces / rosario -->
+        <line x1="250" y1="244" x2="250" y2="272" stroke="#C8A870" stroke-width="2.2" stroke-opacity=".45"/>
+        <line x1="240" y1="254" x2="260" y2="254" stroke="#C8A870" stroke-width="2.2" stroke-opacity=".45"/>
+        <!-- flores base -->
+        <circle cx="140" cy="320" r="18" fill="#E8B8C0" fill-opacity=".5" filter="url(#wc0)"/>
+        <circle cx="168" cy="332" r="12" fill="#ECD8C8" fill-opacity=".44"/>
+        <circle cx="340" cy="316" r="15" fill="#C8D8E8" fill-opacity=".48" filter="url(#wc0)"/>
+        <circle cx="368" cy="328" r="10" fill="#DCC8E4" fill-opacity=".42"/>
+        <!-- destellos -->
+        <circle cx="250" cy="65" r="2.8" fill="#F8E870" fill-opacity=".82"/>
+        <circle cx="230" cy="56" r="1.6" fill="#F8E870" fill-opacity=".6"/>
+        <circle cx="270" cy="54" r="1.6" fill="#F8E870" fill-opacity=".6"/>
+        <text x="250" y="336" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#8C7060" fill-opacity=".55" font-style="italic">Colección Sagrada</text>
+      </svg>
+    </div>
+    <!-- BOTANICA sm -->
+    <div class="hs1">
+      <svg viewBox="0 0 250 175" xmlns="http://www.w3.org/2000/svg" style="height:175px;width:100%;">
+        <defs><filter id="wcB0"><feTurbulence type="fractalNoise" baseFrequency=".042" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></defs>
+        <rect width="250" height="175" fill="#EBF3E5"/>
+        <ellipse cx="125" cy="85" rx="105" ry="80" fill="#E0EED8" fill-opacity=".45"/>
+        <path d="M 125 170 C 123 145 120 118 117 90 C 115 68 118 48 120 28" stroke="#4A7A38" stroke-width="2.8" fill="none" stroke-opacity=".58" filter="url(#wcB0)"/>
+        <ellipse cx="96" cy="92" rx="48" ry="68" fill="#72A860" fill-opacity=".56" transform="rotate(-28,96,92)" filter="url(#wcB0)"/>
+        <ellipse cx="158" cy="76" rx="43" ry="60" fill="#82B870" fill-opacity=".5" transform="rotate(24,158,76)" filter="url(#wcB0)"/>
+        <ellipse cx="93" cy="50" rx="35" ry="50" fill="#62A048" fill-opacity=".46" transform="rotate(-18,93,50)" filter="url(#wcB0)"/>
+        <ellipse cx="162" cy="38" rx="30" ry="44" fill="#74B060" fill-opacity=".46" transform="rotate(28,162,38)" filter="url(#wcB0)"/>
+        <path d="M 83 73 Q 96 92 88 112" stroke="#2A5820" stroke-width=".85" fill="none" stroke-opacity=".3"/>
+        <path d="M 148 58 Q 158 76 150 96" stroke="#2A5820" stroke-width=".85" fill="none" stroke-opacity=".3"/>
+        <path d="M 108 160 L 142 160 L 137 175 L 113 175 Z" fill="#D0A878" fill-opacity=".6" filter="url(#wcB0)"/>
+        <ellipse cx="125" cy="160" rx="17" ry="4.5" fill="#C09868" fill-opacity=".5"/>
+        <text x="125" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4A6A3A" fill-opacity=".65" font-style="italic">Botánica</text>
+      </svg>
+    </div>
+    <!-- INFANTIL sm -->
+    <div class="hs1">
+      <svg viewBox="0 0 250 175" xmlns="http://www.w3.org/2000/svg" style="height:175px;width:100%;">
+        <defs><filter id="wcI0"><feTurbulence type="fractalNoise" baseFrequency=".048" numOctaves="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter></defs>
+        <rect width="250" height="175" fill="#EBE6F5"/>
+        <ellipse cx="125" cy="85" rx="110" ry="82" fill="#E0D8F0" fill-opacity=".45"/>
+        <circle cx="125" cy="68" r="52" fill="#FFF5D8" fill-opacity=".86" filter="url(#wcI0)"/>
+        <circle cx="148" cy="55" r="44" fill="#EBE6F5" fill-opacity=".9"/>
+        <ellipse cx="116" cy="64" rx="5.5" ry="4" fill="#DDB870" fill-opacity=".38"/>
+        <ellipse cx="133" cy="59" rx="4.5" ry="3.5" fill="#DDB870" fill-opacity=".32"/>
+        <circle cx="38" cy="32" r="4.5" fill="#F8E860" fill-opacity=".72"/>
+        <circle cx="202" cy="24" r="3.5" fill="#F8E860" fill-opacity=".65"/>
+        <circle cx="24" cy="90" r="3" fill="#F8E860" fill-opacity=".52"/>
+        <circle cx="218" cy="95" r="3.5" fill="#F8E860" fill-opacity=".58"/>
+        <circle cx="65" cy="18" r="2.5" fill="#F8E860" fill-opacity=".48"/>
+        <!-- Osito -->
+        <circle cx="125" cy="135" r="36" fill="#EEDCB8" fill-opacity=".82" filter="url(#wcI0)"/>
+        <circle cx="104" cy="112" r="18" fill="#E5D0A8" fill-opacity=".76" filter="url(#wcI0)"/>
+        <circle cx="146" cy="112" r="18" fill="#E5D0A8" fill-opacity=".76" filter="url(#wcI0)"/>
+        <circle cx="125" cy="144" r="13" fill="#D8C8A0" fill-opacity=".65"/>
+        <circle cx="118" cy="129" r="5.5" fill="#5A3A18" fill-opacity=".6"/>
+        <circle cx="132" cy="129" r="5.5" fill="#5A3A18" fill-opacity=".6"/>
+        <circle cx="119" cy="128" r="1.8" fill="white" fill-opacity=".75"/>
+        <circle cx="133" cy="128" r="1.8" fill="white" fill-opacity=".75"/>
+        <ellipse cx="125" cy="138" r="4" fill="#8A5830" fill-opacity=".52" rx="4" ry="3"/>
+        <path d="M 119 144 Q 125 150 131 144" stroke="#7A4820" stroke-width="1.3" fill="none" stroke-opacity=".48"/>
+        <ellipse cx="42" cy="168" rx="30" ry="14" fill="white" fill-opacity=".5" filter="url(#wcI0)"/>
+        <ellipse cx="196" cy="170" rx="26" ry="12" fill="white" fill-opacity=".48"/>
+        <text x="125" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7060A0" fill-opacity=".65" font-style="italic">Mundo Infantil</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="tbar">
+  <div class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Despacho a todo Chile</div>
+  <div class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Impresión Fine Art</div>
+  <div class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> Diseños personalizados</div>
+  <div class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Pago en cuotas</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mwrap">
+  <div class="mtrack">
+    <div class="mi"><span class="md"></span>Arte con alma</div><div class="mi"><span class="md"></span>Acuarela pastel</div><div class="mi"><span class="md"></span>Arte religioso</div><div class="mi"><span class="md"></span>Decoración hogar</div><div class="mi"><span class="md"></span>Mundo infantil</div><div class="mi"><span class="md"></span>Fine art impreso</div><div class="mi"><span class="md"></span>Hecho en Chile</div><div class="mi"><span class="md"></span>Personalización única</div>
+    <div class="mi"><span class="md"></span>Arte con alma</div><div class="mi"><span class="md"></span>Acuarela pastel</div><div class="mi"><span class="md"></span>Arte religioso</div><div class="mi"><span class="md"></span>Decoración hogar</div><div class="mi"><span class="md"></span>Mundo infantil</div><div class="mi"><span class="md"></span>Fine art impreso</div><div class="mi"><span class="md"></span>Hecho en Chile</div><div class="mi"><span class="md"></span>Personalización única</div>
+  </div>
+</div>
+
+<!-- CATEGORÍAS -->
+<section style="background:linear-gradient(148deg,rgba(242,221,213,.48) 0%,rgba(232,208,198,.28) 100%);padding:6rem 3.5rem;" id="cats">
+  <p class="sl">Colecciones</p>
+  <h2 class="st">Cada espacio tiene<br><em>su propio arte</em></h2>
+  <div class="cgrid">
+    <!-- Sagrada -->
+    <div class="cc">
+      <div class="cart" style="aspect-ratio:3/4;">
+        <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cs1bg" cx="50%" cy="38%" r="65%"><stop offset="0%" stop-color="#F8F0E8"/><stop offset="100%" stop-color="#EADDD0"/></radialGradient>
+            <radialGradient id="cs1h" cx="50%" cy="27%" r="33%"><stop offset="0%" stop-color="#F8E870" stop-opacity=".44"/><stop offset="100%" stop-color="#F8E870" stop-opacity="0"/></radialGradient>
+            <filter id="wcc1"><feTurbulence type="fractalNoise" baseFrequency=".042" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+          </defs>
+          <rect width="240" height="320" fill="url(#cs1bg)"/>
+          <ellipse cx="120" cy="98" rx="105" ry="92" fill="url(#cs1h)"/>
+          <ellipse cx="68" cy="268" rx="80" ry="68" fill="#C8D8C2" fill-opacity=".22"/>
+          <ellipse cx="182" cy="248" rx="70" ry="60" fill="#D8C8D8" fill-opacity=".18"/>
+          <path d="M 55 320 C 46 280 42 222 58 158 C 70 118 103 103 120 98 C 137 103 170 118 182 158 C 198 222 194 280 185 320 Z" fill="#A8C2D4" fill-opacity=".66" filter="url(#wcc1)"/>
+          <path d="M 78 320 C 73 280 70 232 82 182 C 92 146 112 118 120 112 C 128 118 148 146 158 182 C 170 232 167 280 162 320 Z" fill="#C2DCF0" fill-opacity=".54"/>
+          <ellipse cx="120" cy="148" rx="58" ry="72" fill="#D8EEF8" fill-opacity=".76" filter="url(#wcc1)"/>
+          <ellipse cx="120" cy="133" rx="31" ry="38" fill="#F2DCC8" fill-opacity=".9"/>
+          <ellipse cx="120" cy="133" rx="27" ry="33" fill="#EDD0BC" fill-opacity=".52"/>
+          <path d="M 92 120 Q 120 108 148 120 L 151 137 Q 120 128 89 137 Z" fill="#8C6C50" fill-opacity=".46"/>
+          <ellipse cx="111" cy="129" rx="4.8" ry="3.2" fill="#6A5040" fill-opacity=".52"/>
+          <ellipse cx="129" cy="129" rx="4.8" ry="3.2" fill="#6A5040" fill-opacity=".52"/>
+          <path d="M 114 145 Q 120 150 126 145" stroke="#C08060" stroke-width="1.2" fill="none" stroke-opacity=".5"/>
+          <ellipse cx="108" cy="198" rx="11" ry="14" fill="#EDD0BC" fill-opacity=".62" transform="rotate(-12,108,198)"/>
+          <ellipse cx="132" cy="198" rx="11" ry="14" fill="#EDD0BC" fill-opacity=".62" transform="rotate(12,132,198)"/>
+          <line x1="120" y1="218" x2="120" y2="240" stroke="#C8A870" stroke-width="2" stroke-opacity=".45"/>
+          <line x1="112" y1="226" x2="128" y2="226" stroke="#C8A870" stroke-width="2" stroke-opacity=".45"/>
+          <circle cx="72" cy="298" r="13" fill="#E8B8C0" fill-opacity=".5" filter="url(#wcc1)"/>
+          <circle cx="90" cy="310" r="8.5" fill="#ECD8C8" fill-opacity=".42"/>
+          <circle cx="163" cy="295" r="11" fill="#C8D8E8" fill-opacity=".48" filter="url(#wcc1)"/>
+          <circle cx="182" cy="308" r="7.5" fill="#DCC8E4" fill-opacity=".4"/>
+          <circle cx="120" cy="66" r="2.2" fill="#F8E870" fill-opacity=".8"/>
+          <circle cx="105" cy="58" r="1.3" fill="#F8E870" fill-opacity=".6"/>
+          <circle cx="135" cy="56" r="1.3" fill="#F8E870" fill-opacity=".6"/>
+        </svg>
+      </div>
+      <p class="cn">Colección Sagrada</p>
+      <p class="cs">Vírgenes · Santos · Arte devocional</p>
+    </div>
+    <!-- Botánica -->
+    <div class="cc">
+      <div class="cart" style="aspect-ratio:3/4;">
+        <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="wcb1"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4.5"/></filter></defs>
+          <rect width="240" height="320" fill="#EDF5E5"/>
+          <ellipse cx="120" cy="155" rx="108" ry="140" fill="#E0EED8" fill-opacity=".45"/>
+          <path d="M 120 312 C 118 280 115 244 112 205 C 110 172 114 142 117 112 C 118 88 120 68 120 50" stroke="#4A7A38" stroke-width="3.2" fill="none" stroke-opacity=".6" filter="url(#wcb1)"/>
+          <ellipse cx="90" cy="162" rx="52" ry="74" fill="#72A860" fill-opacity=".58" transform="rotate(-30,90,162)" filter="url(#wcb1)"/>
+          <ellipse cx="155" cy="140" rx="47" ry="66" fill="#82B870" fill-opacity=".52" transform="rotate(26,155,140)" filter="url(#wcb1)"/>
+          <ellipse cx="87" cy="96" rx="40" ry="57" fill="#62A048" fill-opacity=".48" transform="rotate(-20,87,96)" filter="url(#wcb1)"/>
+          <ellipse cx="158" cy="80" rx="36" ry="50" fill="#74B060" fill-opacity=".48" transform="rotate(30,158,80)" filter="url(#wcb1)"/>
+          <ellipse cx="116" cy="42" rx="24" ry="34" fill="#84C068" fill-opacity=".45" transform="rotate(-8,116,42)" filter="url(#wcb1)"/>
+          <path d="M 77 143 Q 90 162 82 182" stroke="#2A5820" stroke-width=".85" fill="none" stroke-opacity=".28"/>
+          <path d="M 146 122 Q 155 140 147 160" stroke="#2A5820" stroke-width=".85" fill="none" stroke-opacity=".28"/>
+          <circle cx="50" cy="202" r="10" fill="#F4C8C0" fill-opacity=".65"/>
+          <circle cx="50" cy="202" r="5" fill="#ECA8A0" fill-opacity=".68"/>
+          <circle cx="192" cy="182" r="9" fill="#F8D8C0" fill-opacity=".62"/>
+          <circle cx="192" cy="182" r="4.5" fill="#F0C8A8" fill-opacity=".68"/>
+          <circle cx="40" cy="135" r="7" fill="#E8C8E0" fill-opacity=".52"/>
+          <path d="M 88 302 L 152 302 L 146 320 L 94 320 Z" fill="#D0A878" fill-opacity=".62" filter="url(#wcb1)"/>
+          <ellipse cx="120" cy="302" rx="32" ry="8.5" fill="#C09868" fill-opacity=".52"/>
+          <ellipse cx="120" cy="300" rx="28" ry="5" fill="#8A6848" fill-opacity=".38"/>
+        </svg>
+      </div>
+      <p class="cn">Decoración Hogar</p>
+      <p class="cs">Botánica · Abstracto · Frases</p>
+    </div>
+    <!-- Infantil -->
+    <div class="cc">
+      <div class="cart" style="aspect-ratio:3/4;">
+        <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="wci1"><feTurbulence type="fractalNoise" baseFrequency=".048" numOctaves="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter></defs>
+          <rect width="240" height="320" fill="#EEE8F8"/>
+          <ellipse cx="120" cy="78" rx="132" ry="105" fill="#E0D8F0" fill-opacity=".5"/>
+          <circle cx="120" cy="90" r="62" fill="#FDF0CC" fill-opacity=".86" filter="url(#wci1)"/>
+          <circle cx="146" cy="75" r="53" fill="#EEE8F8" fill-opacity=".9"/>
+          <ellipse cx="112" cy="86" rx="5.5" ry="4" fill="#D4B880" fill-opacity=".38"/>
+          <ellipse cx="128" cy="82" rx="4.5" ry="3.5" fill="#D4B880" fill-opacity=".32"/>
+          <path d="M 114 97 Q 120 102 126 97" stroke="#D4B880" stroke-width="1.2" fill="none" stroke-opacity=".35"/>
+          <circle cx="34" cy="38" r="4.8" fill="#F8E860" fill-opacity=".72"/>
+          <circle cx="196" cy="28" r="3.8" fill="#F8E860" fill-opacity=".65"/>
+          <circle cx="24" cy="92" r="3.2" fill="#F8E860" fill-opacity=".52"/>
+          <circle cx="210" cy="102" r="3.6" fill="#F8E860" fill-opacity=".58"/>
+          <circle cx="62" cy="22" r="2.6" fill="#F8E860" fill-opacity=".48"/>
+          <circle cx="172" cy="16" r="2.1" fill="#F8E860" fill-opacity=".44"/>
+          <circle cx="220" cy="62" r="2.1" fill="#F8E860" fill-opacity=".4"/>
+          <circle cx="120" cy="220" r="50" fill="#EEDCB8" fill-opacity=".82" filter="url(#wci1)"/>
+          <circle cx="98" cy="194" r="25" fill="#E5D0A8" fill-opacity=".78" filter="url(#wci1)"/>
+          <circle cx="142" cy="194" r="25" fill="#E5D0A8" fill-opacity=".78" filter="url(#wci1)"/>
+          <circle cx="120" cy="230" r="19" fill="#D8C8A0" fill-opacity=".66"/>
+          <circle cx="112" cy="215" r="6.5" fill="#5A3A18" fill-opacity=".62"/>
+          <circle cx="128" cy="215" r="6.5" fill="#5A3A18" fill-opacity=".62"/>
+          <circle cx="113.5" cy="213.5" r="2.2" fill="white" fill-opacity=".75"/>
+          <circle cx="129.5" cy="213.5" r="2.2" fill="white" fill-opacity=".75"/>
+          <ellipse cx="120" cy="226" rx="5.5" ry="4" fill="#8A5830" fill-opacity=".54"/>
+          <path d="M 114 233 Q 120 239 126 233" stroke="#7A4820" stroke-width="1.4" fill="none" stroke-opacity=".48"/>
+          <ellipse cx="44" cy="292" rx="38" ry="20" fill="white" fill-opacity=".55" filter="url(#wci1)"/>
+          <ellipse cx="34" cy="286" rx="22" ry="17" fill="white" fill-opacity=".5"/>
+          <ellipse cx="194" cy="296" rx="35" ry="18" fill="white" fill-opacity=".5" filter="url(#wci1)"/>
+          <text x="120" y="315" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#8060B0" fill-opacity=".65" font-style="italic">Valentina</text>
+        </svg>
+      </div>
+      <p class="cn">Mundo Infantil</p>
+      <p class="cs">Nombres · Animales · Cuartos</p>
+    </div>
+    <!-- A tu medida -->
+    <div class="cc">
+      <div class="cart" style="aspect-ratio:3/4;border:2px dashed rgba(176,90,58,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.4);">
+        <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="320" fill="rgba(250,246,238,.6)"/>
+          <circle cx="75" cy="110" r="30" fill="#E8B8B8" fill-opacity=".38"/>
+          <circle cx="120" cy="94" r="24" fill="#B8CCE0" fill-opacity=".38"/>
+          <circle cx="166" cy="112" r="27" fill="#C8D8B0" fill-opacity=".36"/>
+          <circle cx="80" cy="158" r="21" fill="#E0D0B0" fill-opacity=".33"/>
+          <circle cx="158" cy="160" r="23" fill="#D0C0E0" fill-opacity=".33"/>
+          <line x1="120" y1="205" x2="120" y2="285" stroke="#8A6848" stroke-width="4" stroke-opacity=".38"/>
+          <ellipse cx="120" cy="200" rx="8.5" ry="16" fill="#D0A870" fill-opacity=".48"/>
+          <ellipse cx="120" cy="186" rx="5.5" ry="15" fill="#E8C890" fill-opacity=".38"/>
+          <path d="M 120 168 Q 127 178 120 192 Q 113 178 120 168 Z" fill="#B8CCE0" fill-opacity=".52"/>
+          <line x1="120" y1="48" x2="120" y2="76" stroke="#B05A3A" stroke-width="2.5" stroke-opacity=".48"/>
+          <line x1="106" y1="62" x2="134" y2="62" stroke="#B05A3A" stroke-width="2.5" stroke-opacity=".48"/>
+          <text x="120" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" fill="#B05A3A" fill-opacity=".62" font-style="italic">Tu diseño aquí</text>
+        </svg>
+      </div>
+      <p class="cn">A tu medida</p>
+      <p class="cs">Retrato · Nombre · Fecha especial</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section style="background:rgba(250,246,238,.88);padding:6rem 3.5rem;" id="prods">
+  <p class="sl">Obras destacadas</p>
+  <h2 class="st">Nuestra<br><em>selección curada</em></h2>
+  <div class="pgrid">
+    <!-- P1: Virgen -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="p1bg" cx="50%" cy="36%" r="60%"><stop offset="0%" stop-color="#F5EDE0"/><stop offset="100%" stop-color="#EAE0D0"/></radialGradient>
+            <radialGradient id="p1h" cx="50%" cy="24%" r="30%"><stop offset="0%" stop-color="#F8E470" stop-opacity=".48"/><stop offset="100%" stop-color="#F8E470" stop-opacity="0"/></radialGradient>
+            <filter id="wcp1a"><feTurbulence type="fractalNoise" baseFrequency=".038" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5.5"/></filter>
+          </defs>
+          <rect width="300" height="375" fill="url(#p1bg)"/>
+          <ellipse cx="150" cy="108" rx="130" ry="112" fill="url(#p1h)"/>
+          <ellipse cx="68" cy="318" rx="88" ry="74" fill="#C8D8C2" fill-opacity=".2"/>
+          <ellipse cx="242" cy="295" rx="78" ry="64" fill="#D8C8D8" fill-opacity=".17"/>
+          <path d="M 50 375 C 42 332 38 268 54 194 C 67 144 108 116 150 110 C 192 116 233 144 246 194 C 262 268 258 332 250 375 Z" fill="#A8C0D4" fill-opacity=".68" filter="url(#wcp1a)"/>
+          <path d="M 84 375 C 79 336 77 278 89 222 C 100 178 126 148 150 140 C 174 148 200 178 211 222 C 223 278 221 336 216 375 Z" fill="#C0D8EC" fill-opacity=".56"/>
+          <ellipse cx="150" cy="173" rx="68" ry="84" fill="#D4ECF8" fill-opacity=".77" filter="url(#wcp1a)"/>
+          <ellipse cx="150" cy="158" rx="36" ry="43" fill="#F2DCC8" fill-opacity=".9"/>
+          <ellipse cx="150" cy="158" rx="31" ry="38" fill="#EDD0BC" fill-opacity=".52"/>
+          <path d="M 117 143 Q 150 130 183 143 L 187 162 Q 150 152 113 162 Z" fill="#8C6C50" fill-opacity=".46"/>
+          <ellipse cx="139" cy="154" rx="5.2" ry="3.5" fill="#6A5040" fill-opacity=".52"/>
+          <ellipse cx="161" cy="154" rx="5.2" ry="3.5" fill="#6A5040" fill-opacity=".52"/>
+          <path d="M 143 170 Q 150 175 157 170" stroke="#C08060" stroke-width="1.3" fill="none" stroke-opacity=".5"/>
+          <ellipse cx="131" cy="240" rx="12.5" ry="17" fill="#EDD0BC" fill-opacity=".63" transform="rotate(-12,131,240)"/>
+          <ellipse cx="169" cy="240" rx="12.5" ry="17" fill="#EDD0BC" fill-opacity=".63" transform="rotate(12,169,240)"/>
+          <line x1="150" y1="263" x2="150" y2="290" stroke="#C8A870" stroke-width="2.2" stroke-opacity=".45"/>
+          <line x1="140" y1="273" x2="160" y2="273" stroke="#C8A870" stroke-width="2.2" stroke-opacity=".45"/>
+          <circle cx="72" cy="354" r="16" fill="#E8B8C0" fill-opacity=".5" filter="url(#wcp1a)"/>
+          <circle cx="96" cy="365" r="11" fill="#ECD8C8" fill-opacity=".43"/>
+          <circle cx="216" cy="350" r="13" fill="#C8D8E8" fill-opacity=".47"/>
+          <circle cx="238" cy="362" r="9" fill="#DCC8E4" fill-opacity=".4"/>
+          <circle cx="150" cy="73" r="2.6" fill="#F8E870" fill-opacity=".82"/>
+          <circle cx="131" cy="64" r="1.5" fill="#F8E870" fill-opacity=".62"/>
+          <circle cx="169" cy="62" r="1.5" fill="#F8E870" fill-opacity=".62"/>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Nuestra Señora</p>
+      <div class="pm"><span class="pp">$28.000</span><span class="pct">Sagrada</span></div>
+    </div>
+    <!-- P2: Botanica ficus -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="wcp2a"><feTurbulence type="fractalNoise" baseFrequency=".038" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter></defs>
+          <rect width="300" height="375" fill="#EDF5E5"/>
+          <ellipse cx="150" cy="182" rx="138" ry="158" fill="#E0EED8" fill-opacity=".44"/>
+          <path d="M 150 368 C 148 332 145 292 142 252 C 140 212 143 172 146 132 C 147 102 149 76 150 52" stroke="#4A7A38" stroke-width="3.4" fill="none" stroke-opacity=".58" filter="url(#wcp2a)"/>
+          <ellipse cx="108" cy="192" rx="54" ry="77" fill="#70A058" fill-opacity=".58" transform="rotate(-29,108,192)" filter="url(#wcp2a)"/>
+          <ellipse cx="196" cy="166" rx="49" ry="69" fill="#80B068" fill-opacity=".52" transform="rotate(25,196,166)" filter="url(#wcp2a)"/>
+          <ellipse cx="105" cy="116" rx="43" ry="61" fill="#60A048" fill-opacity=".48" transform="rotate(-19,105,116)" filter="url(#wcp2a)"/>
+          <ellipse cx="198" cy="98" rx="39" ry="55" fill="#72B058" fill-opacity=".47" transform="rotate(28,198,98)" filter="url(#wcp2a)"/>
+          <ellipse cx="145" cy="44" rx="26" ry="37" fill="#84C068" fill-opacity=".44" transform="rotate(-8,145,44)" filter="url(#wcp2a)"/>
+          <path d="M 94 173 Q 108 192 100 212" stroke="#2A5820" stroke-width=".9" fill="none" stroke-opacity=".28"/>
+          <path d="M 186 147 Q 196 166 188 186" stroke="#2A5820" stroke-width=".9" fill="none" stroke-opacity=".28"/>
+          <circle cx="48" cy="232" r="10" fill="#F4C8C0" fill-opacity=".65"/>
+          <circle cx="48" cy="232" r="5" fill="#ECA8A0" fill-opacity=".7"/>
+          <circle cx="255" cy="210" r="9" fill="#F8D8C0" fill-opacity=".62"/>
+          <circle cx="255" cy="210" r="4.5" fill="#F0C8A8" fill-opacity=".68"/>
+          <circle cx="38" cy="142" r="7" fill="#E8C8E0" fill-opacity=".52"/>
+          <path d="M 110 357 L 190 357 L 183 375 L 117 375 Z" fill="#D0A878" fill-opacity=".62" filter="url(#wcp2a)"/>
+          <ellipse cx="150" cy="357" rx="40" ry="10" fill="#C09868" fill-opacity=".52"/>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Ficus Lyrata</p>
+      <div class="pm"><span class="pp">$22.000</span><span class="pct">Botánica</span></div>
+    </div>
+    <!-- P3: Infantil luna osito -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="wcp3a"><feTurbulence type="fractalNoise" baseFrequency=".044" numOctaves="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4.5"/></filter></defs>
+          <rect width="300" height="375" fill="#EAE5F5"/>
+          <ellipse cx="150" cy="98" rx="148" ry="118" fill="#E0D8F0" fill-opacity=".48"/>
+          <ellipse cx="150" cy="278" rx="128" ry="98" fill="#D8E0F0" fill-opacity=".34"/>
+          <circle cx="150" cy="114" r="87" fill="#FFF5D8" fill-opacity=".88" filter="url(#wcp3a)"/>
+          <circle cx="179" cy="96" r="74" fill="#EAE5F5" fill-opacity=".91"/>
+          <ellipse cx="141" cy="109" rx="6.5" ry="5" fill="#DDB870" fill-opacity=".38"/>
+          <ellipse cx="160" cy="104" rx="5.5" ry="4.5" fill="#DDB870" fill-opacity=".33"/>
+          <path d="M 145 120 Q 151 126 157 120" stroke="#DDB870" stroke-width="1.2" fill="none" stroke-opacity=".38"/>
+          <circle cx="36" cy="46" r="5.5" fill="#F8E860" fill-opacity=".74"/>
+          <circle cx="246" cy="33" r="4.5" fill="#F8E860" fill-opacity=".66"/>
+          <circle cx="25" cy="114" r="3.6" fill="#F8E860" fill-opacity=".54"/>
+          <circle cx="262" cy="124" r="4" fill="#F8E860" fill-opacity=".6"/>
+          <circle cx="70" cy="27" r="3" fill="#F8E860" fill-opacity=".5"/>
+          <circle cx="218" cy="20" r="2.5" fill="#F8E860" fill-opacity=".45"/>
+          <circle cx="273" cy="76" r="2.5" fill="#F8E860" fill-opacity=".42"/>
+          <circle cx="150" cy="273" r="62" fill="#EEDCB8" fill-opacity=".82" filter="url(#wcp3a)"/>
+          <circle cx="121" cy="239" r="31" fill="#E5D0A8" fill-opacity=".78" filter="url(#wcp3a)"/>
+          <circle cx="179" cy="239" r="31" fill="#E5D0A8" fill-opacity=".78" filter="url(#wcp3a)"/>
+          <circle cx="150" cy="285" r="23" fill="#D8C8A0" fill-opacity=".66"/>
+          <circle cx="139" cy="266" r="7.8" fill="#5A3A18" fill-opacity=".62"/>
+          <circle cx="161" cy="266" r="7.8" fill="#5A3A18" fill-opacity=".62"/>
+          <circle cx="140.5" cy="264.5" r="2.5" fill="white" fill-opacity=".76"/>
+          <circle cx="162.5" cy="264.5" r="2.5" fill="white" fill-opacity=".76"/>
+          <ellipse cx="150" cy="279" rx="6.5" ry="4.5" fill="#8A5830" fill-opacity=".54"/>
+          <path d="M 143 287 Q 150 294 157 287" stroke="#7A4820" stroke-width="1.5" fill="none" stroke-opacity=".5"/>
+          <ellipse cx="46" cy="348" rx="42" ry="22" fill="white" fill-opacity=".57" filter="url(#wcp3a)"/>
+          <ellipse cx="34" cy="342" rx="26" ry="20" fill="white" fill-opacity=".52"/>
+          <ellipse cx="252" cy="352" rx="38" ry="20" fill="white" fill-opacity=".54" filter="url(#wcp3a)"/>
+          <text x="150" y="370" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#7060A0" fill-opacity=".7" font-style="italic">Valentina</text>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Mi nombre en las estrellas</p>
+      <div class="pm"><span class="pp">$32.000</span><span class="pct">Infantil · Personalizado</span></div>
+    </div>
+    <!-- P4: Abstracto manchas -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="wcp4a"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="14"/></filter>
+            <filter id="bl4"><feGaussianBlur stdDeviation="5"/></filter>
+          </defs>
+          <rect width="300" height="375" fill="#F5EEE8"/>
+          <circle cx="98" cy="132" r="92" fill="#E8B8A8" fill-opacity=".42" filter="url(#wcp4a)"/>
+          <circle cx="202" cy="158" r="82" fill="#B8C8D8" fill-opacity=".4" filter="url(#wcp4a)"/>
+          <circle cx="128" cy="232" r="86" fill="#C8D8B8" fill-opacity=".37" filter="url(#wcp4a)"/>
+          <circle cx="192" cy="282" r="76" fill="#D8C8E0" fill-opacity=".36" filter="url(#wcp4a)"/>
+          <circle cx="78" cy="290" r="72" fill="#E8D8A8" fill-opacity=".33" filter="url(#wcp4a)"/>
+          <circle cx="165" cy="78" r="55" fill="#C8E0D8" fill-opacity=".3" filter="url(#wcp4a)"/>
+          <path d="M 58 78 Q 148 118 238 98 Q 278 158 198 198 Q 118 238 78 298 Q 58 338 138 358" stroke="#9A8878" stroke-width="1.1" fill="none" stroke-opacity=".27" filter="url(#wcp4a)"/>
+          <circle cx="52" cy="52" r="4" fill="#D8A890" fill-opacity=".48"/>
+          <circle cx="252" cy="62" r="3.5" fill="#A8C0B8" fill-opacity=".48"/>
+          <circle cx="242" cy="322" r="5" fill="#C8B8D8" fill-opacity=".48"/>
+          <circle cx="42" cy="340" r="4" fill="#D8C8A0" fill-opacity=".46"/>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Niebla de Marzo</p>
+      <div class="pm"><span class="pp">$24.000</span><span class="pct">Abstracto</span></div>
+    </div>
+    <!-- P5: Flores rosas -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="wcp5a"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5.5"/></filter></defs>
+          <rect width="300" height="375" fill="#F8F0F4"/>
+          <ellipse cx="150" cy="198" rx="138" ry="158" fill="#F0E4EC" fill-opacity=".48"/>
+          <path d="M 118 370 C 116 338 114 298 116 258 C 118 218 126 188 130 154" stroke="#5A8048" stroke-width="2.2" fill="none" stroke-opacity=".48" filter="url(#wcp5a)"/>
+          <path d="M 158 370 C 160 334 162 294 160 256 C 158 216 150 186 146 152" stroke="#5A8048" stroke-width="2" fill="none" stroke-opacity=".46" filter="url(#wcp5a)"/>
+          <path d="M 198 370 C 193 330 183 280 176 240 C 170 207 166 174 163 138" stroke="#5A8048" stroke-width="2" fill="none" stroke-opacity=".43" filter="url(#wcp5a)"/>
+          <!-- Rosa 1 -->
+          <circle cx="130" cy="138" r="44" fill="#F0A8B8" fill-opacity=".48" filter="url(#wcp5a)"/>
+          <circle cx="130" cy="138" r="33" fill="#E898A8" fill-opacity=".53" filter="url(#wcp5a)"/>
+          <circle cx="130" cy="138" r="23" fill="#D88098" fill-opacity=".57"/>
+          <circle cx="130" cy="138" r="13" fill="#C87088" fill-opacity=".6"/>
+          <circle cx="130" cy="138" r="5.5" fill="#B86078" fill-opacity=".62"/>
+          <!-- Rosa 2 -->
+          <circle cx="200" cy="115" r="36" fill="#F4C0C8" fill-opacity=".46" filter="url(#wcp5a)"/>
+          <circle cx="200" cy="115" r="27" fill="#ECA8B8" fill-opacity=".5" filter="url(#wcp5a)"/>
+          <circle cx="200" cy="115" r="18" fill="#E090A0" fill-opacity=".54"/>
+          <circle cx="200" cy="115" r="8.5" fill="#D08090" fill-opacity=".57"/>
+          <!-- Rosa 3 -->
+          <circle cx="73" cy="162" r="29" fill="#F8D0D8" fill-opacity=".44" filter="url(#wcp5a)"/>
+          <circle cx="73" cy="162" r="21" fill="#F0C0C8" fill-opacity=".47"/>
+          <circle cx="73" cy="162" r="13" fill="#E0A8B8" fill-opacity=".51"/>
+          <circle cx="73" cy="162" r="5.8" fill="#D098A8" fill-opacity=".54"/>
+          <!-- Hojas -->
+          <ellipse cx="106" cy="173" rx="20" ry="30" fill="#78A860" fill-opacity=".44" transform="rotate(20,106,173)" filter="url(#wcp5a)"/>
+          <ellipse cx="168" cy="152" rx="18" ry="26" fill="#68A850" fill-opacity=".41" transform="rotate(-18,168,152)" filter="url(#wcp5a)"/>
+          <ellipse cx="224" cy="145" rx="16" ry="22" fill="#78B060" fill-opacity=".39" transform="rotate(26,224,145)" filter="url(#wcp5a)"/>
+          <!-- Pétalos caídos -->
+          <ellipse cx="52" cy="312" rx="8" ry="13" fill="#F0B8C0" fill-opacity=".38" transform="rotate(32,52,312)"/>
+          <ellipse cx="248" cy="302" rx="7" ry="12" fill="#E8C0C8" fill-opacity=".37" transform="rotate(-21,248,302)"/>
+          <ellipse cx="83" cy="346" rx="6.5" ry="11" fill="#F4C8D0" fill-opacity=".36" transform="rotate(46,83,346)"/>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Jardín de Rosas</p>
+      <div class="pm"><span class="pp">$26.000</span><span class="pct">Floral · Botánica</span></div>
+    </div>
+    <!-- P6: Sagrado Corazón -->
+    <div class="pc">
+      <div class="part" style="aspect-ratio:4/5;">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="p6bg" cx="50%" cy="44%" r="63%"><stop offset="0%" stop-color="#FDF0E8"/><stop offset="100%" stop-color="#F0E4D8"/></radialGradient>
+            <radialGradient id="p6h" cx="50%" cy="29%" r="38%"><stop offset="0%" stop-color="#F8D460" stop-opacity=".4"/><stop offset="100%" stop-color="#F8D460" stop-opacity="0"/></radialGradient>
+            <filter id="wcp6a"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5.5"/></filter>
+          </defs>
+          <rect width="300" height="375" fill="url(#p6bg)"/>
+          <ellipse cx="150" cy="158" rx="128" ry="138" fill="url(#p6h)"/>
+          <path d="M 82 375 C 75 332 72 282 78 232 C 82 200 98 174 118 166 L 112 375 Z" fill="#E8A8A0" fill-opacity=".48" filter="url(#wcp6a)"/>
+          <path d="M 218 375 C 225 332 228 282 222 232 C 218 200 202 174 182 166 L 188 375 Z" fill="#E8A8A0" fill-opacity=".46" filter="url(#wcp6a)"/>
+          <ellipse cx="150" cy="258" rx="66" ry="110" fill="#F0E8DC" fill-opacity=".54" filter="url(#wcp6a)"/>
+          <ellipse cx="150" cy="140" rx="37" ry="45" fill="#F2DCC8" fill-opacity=".9"/>
+          <ellipse cx="150" cy="140" rx="32" ry="39" fill="#EDD0BC" fill-opacity=".52"/>
+          <path d="M 116 126 Q 150 113 184 126 L 188 146 Q 150 136 112 146 Z" fill="#8C6C50" fill-opacity=".45"/>
+          <ellipse cx="139" cy="136" rx="5.2" ry="3.5" fill="#6A5040" fill-opacity=".5"/>
+          <ellipse cx="161" cy="136" rx="5.2" ry="3.5" fill="#6A5040" fill-opacity=".5"/>
+          <path d="M 144 153 Q 150 158 156 153" stroke="#C08060" stroke-width="1.2" fill="none" stroke-opacity=".49"/>
+          <!-- Sagrado corazón -->
+          <path d="M 150 217 C 129 207 113 222 113 238 C 113 253 129 263 150 276 C 171 263 187 253 187 238 C 187 222 171 207 150 217 Z" fill="#E8A0A0" fill-opacity=".6" filter="url(#wcp6a)"/>
+          <path d="M 150 221 C 132 213 120 226 120 240 C 120 253 135 262 150 272 C 165 262 180 253 180 240 C 180 226 168 213 150 221 Z" fill="#F0B8B0" fill-opacity=".48"/>
+          <line x1="150" y1="206" x2="150" y2="220" stroke="#C8A870" stroke-width="2" stroke-opacity=".48"/>
+          <line x1="143" y1="212" x2="157" y2="212" stroke="#C8A870" stroke-width="2" stroke-opacity=".48"/>
+          <line x1="150" y1="244" x2="116" y2="296" stroke="#F8D460" stroke-width="1.5" stroke-opacity=".33" filter="url(#wcp6a)"/>
+          <line x1="150" y1="244" x2="184" y2="296" stroke="#F8D460" stroke-width="1.5" stroke-opacity=".33" filter="url(#wcp6a)"/>
+          <circle cx="70" cy="356" r="15" fill="#E8B8B8" fill-opacity=".5"/>
+          <circle cx="232" cy="352" r="12" fill="#C8D8E0" fill-opacity=".47"/>
+          <circle cx="148" cy="72" r="2.6" fill="#F8E870" fill-opacity=".82"/>
+          <circle cx="130" cy="63" r="1.5" fill="#F8E870" fill-opacity=".62"/>
+          <circle cx="168" cy="61" r="1.5" fill="#F8E870" fill-opacity=".62"/>
+        </svg>
+        <div class="pframe"></div>
+        <div class="pov"><a href="#cfg" class="povb">Ver opciones</a></div>
+      </div>
+      <p class="pn">Sagrado Corazón</p>
+      <div class="pm"><span class="pp">$28.000</span><span class="pct">Sagrada</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURADOR -->
+<section style="background:linear-gradient(148deg,rgba(234,216,192,.48) 0%,rgba(212,184,150,.26) 100%);padding:6rem 3.5rem;" id="cfg">
+  <p class="sl">Personaliza tu obra</p>
+  <h2 class="st">Elige tu lámina<br><em>exactamente como la imaginas</em></h2>
+  <div class="cfgl">
+    <div>
+      <div class="cfgc">
+        <div class="cfw" id="fW">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <rect width="200" height="260" fill="#F5EDE0"/>
+            <ellipse cx="100" cy="88" rx="80" ry="82" fill="#F8E870" fill-opacity=".3"/>
+            <ellipse cx="100" cy="152" rx="55" ry="75" fill="#A8C0D4" fill-opacity=".58"/>
+            <ellipse cx="100" cy="104" rx="42" ry="52" fill="#D4ECF8" fill-opacity=".7"/>
+            <ellipse cx="100" cy="94" rx="24" ry="29" fill="#F2DCC8" fill-opacity=".88"/>
+            <ellipse cx="100" cy="78" rx="24" ry="14" fill="#8C6C50" fill-opacity=".4"/>
+            <ellipse cx="91" cy="91" rx="3.5" ry="2.5" fill="#6A5040" fill-opacity=".5"/>
+            <ellipse cx="109" cy="91" rx="3.5" ry="2.5" fill="#6A5040" fill-opacity=".5"/>
+            <path d="M 95 103 Q 100 107 105 103" stroke="#C08060" stroke-width="1" fill="none" stroke-opacity=".48"/>
+            <circle cx="100" cy="48" r="1.8" fill="#F8E870" fill-opacity=".78"/>
+            <circle cx="46" cy="232" r="10" fill="#E8B8C0" fill-opacity=".48"/>
+            <circle cx="157" cy="227" r="9" fill="#C8D8E8" fill-opacity=".46"/>
+            <line x1="100" y1="122" x2="100" y2="142" stroke="#C8A870" stroke-width="1.8" stroke-opacity=".42"/>
+            <line x1="93" y1="130" x2="107" y2="130" stroke="#C8A870" stroke-width="1.8" stroke-opacity=".42"/>
+          </svg>
+        </div>
+        <p style="font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;">Vista previa</p>
+      </div>
+    </div>
+    <div class="cfgo">
+      <div>
+        <p class="cgl">Tamaño</p>
+        <div class="chips" id="sC">
+          <button class="chip active" data-price="0" onclick="pk(this,'sC')">A4 · 21×30 cm</button>
+          <button class="chip" data-price="8000" onclick="pk(this,'sC')">A3 · 30×42 cm</button>
+          <button class="chip" data-price="18000" onclick="pk(this,'sC')">50×70 cm</button>
+          <button class="chip" data-price="30000" onclick="pk(this,'sC')">70×100 cm</button>
+        </div>
+      </div>
+      <div>
+        <p class="cgl">Formato</p>
+        <div class="chips" id="fC">
+          <button class="chip active" data-price="0" data-bc="#e8e0d0" data-bw="2" onclick="pk(this,'fC');sf(this)">Solo lámina</button>
+          <button class="chip" data-price="12000" data-bc="#2a2a2a" data-bw="12" onclick="pk(this,'fC');sf(this)">Marco negro</button>
+          <button class="chip" data-price="15000" data-bc="#8a6a40" data-bw="12" onclick="pk(this,'fC');sf(this)">Marco madera</button>
+          <button class="chip" data-price="20000" data-bc="#c0b090" data-bw="6" onclick="pk(this,'fC');sf(this)">Canvas</button>
+        </div>
+      </div>
+      <div>
+        <p class="cgl">Papel</p>
+        <div class="chips" id="pC">
+          <button class="chip active" data-price="0" onclick="pk(this,'pC')">Fine Art 250g</button>
+          <button class="chip" data-price="5000" onclick="pk(this,'pC')">Premium mate 300g</button>
+          <button class="chip" data-price="4000" onclick="pk(this,'pC')">Fotográfico brillo</button>
+        </div>
+      </div>
+      <div>
+        <p class="cgl">Personalización</p>
+        <div class="chips" id="rsC">
+          <button class="chip active" data-price="0" onclick="pk(this,'rsC')">Sin personalizar</button>
+          <button class="chip" data-price="8000" onclick="pk(this,'rsC')">Agregar nombre</button>
+          <button class="chip" data-price="12000" onclick="pk(this,'rsC')">Diseño a medida</button>
+        </div>
+      </div>
+      <div class="ctot">
+        <div><p class="ctlbl">Total estimado</p><p class="ctp" id="tP">$28.000</p></div>
+        <div style="text-align:right;"><p style="font-size:.7rem;color:var(--muted);">Incluye IVA</p><p style="font-size:.7rem;color:var(--muted);">Despacho desde $3.500</p></div>
+      </div>
+      <button class="cfgbtn" onclick="alert('¡Perfecto! Escríbenos por WhatsApp para continuar tu pedido.')">Agregar al carrito →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section style="background:rgba(250,246,238,.9);padding:6rem 3.5rem;" id="proc">
+  <p class="sl">Cómo trabajamos</p>
+  <h2 class="st">Del concepto<br><em>a tu pared</em></h2>
+  <div class="pgr">
+    <div><p class="pn2" style="color:var(--blush);">01</p><p class="pt">Diseño con IA</p><p class="pb">Generamos bocetos con inteligencia artificial de alta calidad. Cada diseño es curado y refinado a mano para lograr el resultado correcto.</p></div>
+    <div><p class="pn2" style="color:var(--sage2);">02</p><p class="pt">Curación editorial</p><p class="pb">No publicamos lo que sale por defecto. Cada obra pasa por selección de color, composición y detalle hasta que esté lista.</p></div>
+    <div><p class="pn2" style="color:var(--sky2);">03</p><p class="pt">Impresión Fine Art</p><p class="pb">Papel de alta densidad libre de ácido, tintas pigmentadas de larga duración. La misma tecnología de museos y galerías.</p></div>
+    <div><p class="pn2" style="color:var(--gold2);">04</p><p class="pt">A tu puerta</p><p class="pb">Embalaje cuidado con tubo o caja rígida, packaging con identidad y seguimiento. Despacho a todo Chile en 3-7 días hábiles.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section style="background:linear-gradient(148deg,rgba(212,224,204,.48) 0%,rgba(184,200,176,.28) 100%);padding:6rem 3.5rem;">
+  <p class="sl">Lo que dicen</p>
+  <h2 class="st">Clientes que<br><em>encontraron su arte</em></h2>
+  <div class="tgr">
+    <div class="tc"><p class="ts">★★★★★</p><p class="tt">"Pedí una lámina de la Virgen con el nombre de mi mamá. Llegó perfecta, el papel es increíble y la atención muy cercana."</p><p class="tby">Valentina R. · Santiago</p></div>
+    <div class="tc"><p class="ts">★★★★★</p><p class="tt">"Decoré el cuarto de mi hija con tres láminas de Bruma. Las botánicas quedaron preciosas, el color exactamente como en las fotos."</p><p class="tby">Catalina M. · Providencia</p></div>
+    <div class="tc"><p class="ts">★★★★★</p><p class="tt">"Compré un canvas enmarcado. Me ayudaron a elegir el tamaño para mi muro y quedó espectacular. Volveré pronto."</p><p class="tby">Rodrigo T. · Viña del Mar</p></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nlsec">
+  <p class="sl">Únete a Bruma</p>
+  <h2 class="st" style="font-size:2.2rem;color:white;margin-bottom:.75rem;">Sé el primero en ver<br>cada nueva colección</h2>
+  <p style="color:rgba(255,255,255,.78);font-size:.95rem;">Acceso anticipado, descuentos exclusivos y proceso creativo detrás de cada obra.</p>
+  <div class="nlf">
+    <input type="email" class="nli" placeholder="Tu correo electrónico">
+    <button class="nlb" onclick="alert('¡Gracias! Te avisaremos con cada novedad.')">Suscribirme</button>
+  </div>
+</div>
+
+<footer>
+  <div class="fg">
+    <div><p class="fbl">BRUMA <span>·</span> ESTUDIO</p><p class="fd">Arte impreso con alma. Ilustraciones y fotografías de acuarela para transformar tus espacios con intención y estilo. Hecho en Chile.</p></div>
+    <div><p class="fct">Colecciones</p><ul class="fcl"><li><a href="#">Sagrada</a></li><li><a href="#">Decoración Hogar</a></li><li><a href="#">Mundo Infantil</a></li><li><a href="#">Fotografía</a></li><li><a href="#">A tu medida</a></li></ul></div>
+    <div><p class="fct">Información</p><ul class="fcl"><li><a href="#">Sobre nosotros</a></li><li><a href="#">Cómo comprar</a></li><li><a href="#">Despachos</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Preguntas frecuentes</a></li></ul></div>
+    <div><p class="fct">Contacto</p><ul class="fcl"><li><a href="#">@brumaestudio</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">hola@brumaestudio.cl</a></li><li><a href="#">Santiago, Chile</a></li></ul></div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Bruma Estudio. Todos los derechos reservados.</span>
+    <div class="soc"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a></div>
+  </div>
+</footer>
+
+<script>
+const BASE=28000;
+function pk(el,gid){document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');ut();}
+function sf(el){const fw=document.getElementById('fW');fw.style.borderColor=el.dataset.bc||'#e8e0d0';fw.style.borderWidth=(el.dataset.bw||'2')+'px';}
+function ut(){let t=BASE;document.querySelectorAll('.chip.active').forEach(c=>{t+=parseInt(c.dataset.price||0);});document.getElementById('tP').textContent='$'+t.toLocaleString('es-CL');}
+document.querySelectorAll('.chip').forEach(c=>{if(!c.dataset.price)c.dataset.price=0;});
+</script>
+</body>
+</html>
