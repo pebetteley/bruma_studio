@@ -1,0 +1,154 @@
+{
+  "colecciones": [
+    {
+      "id": "sagrada",
+      "nombre": "Colección Sagrada",
+      "descripcion": "Vírgenes · Santos · Arte devocional",
+      "color_bg": "linear-gradient(160deg, #4a3226 0%, #7a5240 100%)"
+    },
+    {
+      "id": "botanica",
+      "nombre": "Decoración Hogar",
+      "descripcion": "Botánica · Abstracto · Frases",
+      "color_bg": "linear-gradient(160deg, #2a3528 0%, #4a6040 100%)"
+    },
+    {
+      "id": "infantil",
+      "nombre": "Mundo Infantil",
+      "descripcion": "Nombres · Animales · Cuartos",
+      "color_bg": "linear-gradient(160deg, #2c2a38 0%, #4e4870 100%)"
+    },
+    {
+      "id": "personalizado",
+      "nombre": "A tu medida",
+      "descripcion": "Retrato · Nombre · Fecha especial",
+      "color_bg": "linear-gradient(160deg, #2e2828 0%, #5a4040 100%)"
+    }
+  ],
+
+  "productos": [
+    {
+      "id": "p001",
+      "nombre": "Nuestra Señora",
+      "coleccion": "sagrada",
+      "precio": 28000,
+      "precio_formateado": "$28.000",
+      "descripcion": "Ilustración de acuarela de la Virgen María con manto azul pastel y halo dorado. Ideal para espacios de devoción, regalo de bautizo o primera comunión.",
+      "etiquetas": ["Sagrada", "Virgen", "Regalo religioso"],
+      "ilustracion_svg": "ilustraciones/nuestra-senora.svg",
+      "disponible": true,
+      "destacado": true,
+      "personalizable": false,
+      "formatos": ["lamina", "marco_negro", "marco_madera", "canvas"],
+      "tamanios": ["A4", "A3", "50x70", "70x100"]
+    },
+    {
+      "id": "p002",
+      "nombre": "Ficus Lyrata",
+      "coleccion": "botanica",
+      "precio": 22000,
+      "precio_formateado": "$22.000",
+      "descripcion": "Acuarela botánica de ficus lyrata con hojas grandes, nervaduras delicadas y maceta de cerámica. Perfecta para livings, comedores y oficinas.",
+      "etiquetas": ["Botánica", "Plantas", "Decoración hogar"],
+      "ilustracion_svg": "ilustraciones/ficus-lyrata.svg",
+      "disponible": true,
+      "destacado": true,
+      "personalizable": false,
+      "formatos": ["lamina", "marco_negro", "marco_madera", "canvas"],
+      "tamanios": ["A4", "A3", "50x70", "70x100"]
+    },
+    {
+      "id": "p003",
+      "nombre": "Mi nombre en las estrellas",
+      "coleccion": "infantil",
+      "precio": 32000,
+      "precio_formateado": "$32.000",
+      "descripcion": "Luna llena con osito dormido y nombre personalizado del niño o niña en letras cursivas. Cada lámina se hace a pedido con el nombre elegido.",
+      "etiquetas": ["Infantil", "Personalizado", "Bebé", "Regalo"],
+      "ilustracion_svg": "ilustraciones/osito-luna.svg",
+      "disponible": true,
+      "destacado": true,
+      "personalizable": true,
+      "campo_personalizacion": "Nombre del niño o niña",
+      "formatos": ["lamina", "marco_negro", "marco_madera"],
+      "tamanios": ["A4", "A3", "50x70"]
+    },
+    {
+      "id": "p004",
+      "nombre": "Niebla de Marzo",
+      "coleccion": "botanica",
+      "precio": 24000,
+      "precio_formateado": "$24.000",
+      "descripcion": "Composición abstracta de manchas de acuarela en tonos tierra, azul polvo y rosa antiguo. Estilo contemporáneo, ideal para espacios minimalistas.",
+      "etiquetas": ["Abstracto", "Contemporáneo", "Decoración hogar"],
+      "ilustracion_svg": "ilustraciones/niebla-marzo.svg",
+      "disponible": true,
+      "destacado": false,
+      "personalizable": false,
+      "formatos": ["lamina", "marco_negro", "marco_madera", "canvas"],
+      "tamanios": ["A4", "A3", "50x70", "70x100"]
+    },
+    {
+      "id": "p005",
+      "nombre": "Jardín de Rosas",
+      "coleccion": "botanica",
+      "precio": 26000,
+      "precio_formateado": "$26.000",
+      "descripcion": "Rosas en acuarela con pétalos caídos y hojas de distintos verdes. Composición vertical con tres rosas de distintos tamaños en tonos rosa y blush.",
+      "etiquetas": ["Floral", "Botánica", "Romántico", "Rosas"],
+      "ilustracion_svg": "ilustraciones/jardin-rosas.svg",
+      "disponible": true,
+      "destacado": true,
+      "personalizable": false,
+      "formatos": ["lamina", "marco_negro", "marco_madera", "canvas"],
+      "tamanios": ["A4", "A3", "50x70", "70x100"]
+    },
+    {
+      "id": "p006",
+      "nombre": "Sagrado Corazón",
+      "coleccion": "sagrada",
+      "precio": 28000,
+      "precio_formateado": "$28.000",
+      "descripcion": "Figura devocional del Sagrado Corazón de Jesús en acuarela pastel. Tonos cálidos con rayos de luz dorada. Para espacios de oración y regalo religioso.",
+      "etiquetas": ["Sagrada", "Religioso", "Jesús", "Regalo"],
+      "ilustracion_svg": "ilustraciones/sagrado-corazon.svg",
+      "disponible": true,
+      "destacado": true,
+      "personalizable": false,
+      "formatos": ["lamina", "marco_negro", "marco_madera", "canvas"],
+      "tamanios": ["A4", "A3", "50x70", "70x100"]
+    }
+  ],
+
+  "configurador": {
+    "precio_base": 28000,
+    "tamanios": [
+      { "id": "A4",    "label": "A4 · 21×30 cm", "extra": 0     },
+      { "id": "A3",    "label": "A3 · 30×42 cm", "extra": 8000  },
+      { "id": "50x70", "label": "50×70 cm",       "extra": 18000 },
+      { "id": "70x100","label": "70×100 cm",      "extra": 30000 }
+    ],
+    "formatos": [
+      { "id": "lamina",       "label": "Solo lámina",   "extra": 0,     "border_color": "#e8e0d0", "border_width": 2  },
+      { "id": "marco_negro",  "label": "Marco negro",   "extra": 12000, "border_color": "#2a2a2a", "border_width": 12 },
+      { "id": "marco_madera", "label": "Marco madera",  "extra": 15000, "border_color": "#8a6a40", "border_width": 12 },
+      { "id": "canvas",       "label": "Canvas",        "extra": 20000, "border_color": "#c0b090", "border_width": 6  }
+    ],
+    "papeles": [
+      { "id": "fineart",  "label": "Fine Art 250g",      "extra": 0    },
+      { "id": "premium",  "label": "Premium mate 300g",  "extra": 5000 },
+      { "id": "foto",     "label": "Fotográfico brillo", "extra": 4000 }
+    ],
+    "personalizacion": [
+      { "id": "ninguna",  "label": "Sin personalizar",  "extra": 0     },
+      { "id": "nombre",   "label": "Agregar nombre",    "extra": 8000  },
+      { "id": "medida",   "label": "Diseño a medida",   "extra": 12000 }
+    ]
+  },
+
+  "despacho": {
+    "gratis_sobre": 50000,
+    "precio_base": 3500,
+    "dias_habiles": "3-7"
+  }
+}
